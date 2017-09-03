@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSSCのページを作る</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+    <header><h1>CSSCのindex.htmlを自動生成する</h1></header>
+</div>
+
+<hr>
+
+<div class="container">
+    <h1>使い方</h1>
+    <p>このフォームに入力し変換ボタンを押すと、一番下のテキストエリアにHTMLが表示されるので、それをコピペして使ってください。</p>
+    <h2>画像について</h2>
+    <p>
+        オープニングの画像３つの名前は、op1.jpg、op2.jpg、op3.jpgとしてあります。そのサムネイルは、op1_s.jpg、op2_s.jpg、op3_s.jpgのようになっています。サムネイル画像は、画像名に_sを付けたものにしています。</p>
+    <p>エンディングの画像名は、ed.jpg。</p>
+    <p>スクリーンショットの画像名は、s1.jpg,s2.jpg,s3.jpg</p>
+    <p>グループの画像名は、g1.jpg,g2.jpg,g3.jpg</p>
+
+</div>
+
+<div class="container" id="forms">
+    <h1>入力フォーム</h1>
+    <!--入力フォームはJSで生成-->
+</div>
+
+<div class="container">
+    <button type="submit" class="btn btn-warning" id="convert">変換！！</button>
+</div>
+
+<div class="container">
+    <label for="converted"><h1>出力結果</h1></label>
+    <textarea class="form-control" rows="10" id="converted"></textarea>
+
+</div>
+
+<hr>
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<script src="js/auto-generate-form.js"></script>
+<script src="js/click-listener.js"></script>
+<script src="js/leave-alert.js"></script>
+
+</body>
+</html>
