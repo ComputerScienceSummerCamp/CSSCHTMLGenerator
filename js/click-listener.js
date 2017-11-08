@@ -41,7 +41,7 @@ function genHTML() {
         '<head>\n' +
         '\t<meta charset="UTF-8">\n' +
         '\t<link rel="stylesheet" href="css/default.css">\n' +
-        '\t<link href="css/lightbox.css" rel="stylesheet" />\n' +
+        '\t<link href="css/lightbox.css" rel="stylesheet">\n' +
         '\t<script\n' +
         '        src="https://code.jquery.com/jquery-3.2.1.min.js"\n' +
         '        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="\n' +

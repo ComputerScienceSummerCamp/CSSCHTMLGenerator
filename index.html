@@ -14,9 +14,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="container">
-    <header><h1>CSSCのindex.htmlを自動生成する</h1></header>
-</div>
+<header><h1>CSSCのindex.htmlを自動生成する</h1></header>
 
 <hr>
 
@@ -41,10 +39,10 @@
     <button type="submit" class="btn btn-warning" id="convert">変換！！</button>
 </div>
 
-<div class="container">
+<div class="container" id="output">
     <label for="converted"><h1>出力結果</h1></label>
     <textarea class="form-control" rows="10" id="converted"></textarea>
-
+    <button id="download-button"><a id="download" href="#" download="index.html" onclick="handleDownload()">index.htmlをダウンロード</a></button>
 </div>
 
 <hr>
@@ -55,6 +53,7 @@
 <script src="js/auto-generate-form.js"></script>
 <script src="js/click-listener.js"></script>
 <script src="js/leave-alert.js"></script>
+<script src="js/download.js"></script>
 
 </body>
 </html>

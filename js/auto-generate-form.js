@@ -7,6 +7,15 @@ function makeTextForm(id, innerStr) {
         .appendTo('#forms');
 }
 
+function makeTextArea(id, innerStr) {
+    let label = $('<label for=${id}>').html(innerStr);
+
+    $('<div class="form-group"></div>')
+        .append(label)
+        .append(`<textarea id=${id} class="form-control" rows="10"></textarea>`)
+        .appendTo('#forms');
+}
+
 function makeSelectForm(id, innerStr) {
     let makeSelectTag = function (_id) {
         let select = $(`<select id=${_id} class="form-control"></select>`);
@@ -78,7 +87,7 @@ makeTextForm('about-team', 'どのようなチームか');
 makeTableForm();
 
 makeTextForm('game-name', '卒業制作のゲーム名');
-makeTextForm('how-to-play', '操作方法');
+makeTextArea('how-to-play', '操作方法');
 
 makeTextForm('source-pass-jis', 'ソースファイルのパス Windows版（Shift-JIS）');
 makeTextForm('source-pass-utf8', 'ソースファイルのパス UNIX版（UTF-8）');
