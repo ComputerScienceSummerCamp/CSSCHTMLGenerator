@@ -1,5 +1,5 @@
 function makeTextForm(id, innerStr) {
-    let label = $('<label for=${id}>').html(innerStr);
+    let label = $(`<label for=${id}>`).html(innerStr);
 
     $('<div class="form-group"></div>')
         .append(label)
@@ -8,7 +8,7 @@ function makeTextForm(id, innerStr) {
 }
 
 function makeTextArea(id, innerStr) {
-    let label = $('<label for=${id}>').html(innerStr);
+    let label = $(`<label for=${id}>`).html(innerStr);
 
     $('<div class="form-group"></div>')
         .append(label)
