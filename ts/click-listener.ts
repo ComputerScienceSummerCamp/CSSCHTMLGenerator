@@ -9,7 +9,7 @@ function getTableStr() {
         const id = table.rows[i].cells[1].firstChild.value;
 
         if(name == "" && id == "")
-            break;
+            continue;
 
         tableTag +=
 `                <tr>
@@ -29,7 +29,7 @@ function genHTML() {
     const aboutTeam = $('#about-team').val();
     const fromTA = $('#from-ta').val();
 
-    const tableStr = getTableStr($('#table'));
+    const tableStr = getTableStr();
 
     const htmlStr =
         `<!DOCTYPE HTML>

@@ -1,0 +1,52 @@
+function getTableStr(students) {
+    var studentsTable = students.map(function (s, index) {
+        return "\n\t\t\t\t<tr>\n\t\t\t\t    <td>" + s.name + "</td>\n\t\t\t\t    <td><a href=\"../../students/" + s.id + "/\">" + s.id + "</a></td>\n\t\t\t\t    <td>" + s.role + "</td>\n\t\t\t\t</tr>\n";
+    });
+    return studentsTable.join("");
+}
+var StudentInfo = (function () {
+    function StudentInfo(name, id, role, gsfPass, title, comment) {
+        this.name = name;
+        this.id = id;
+        this.role = role;
+        this.gsfPass = gsfPass;
+        this.title = title;
+        this.comment = comment;
+    }
+    return StudentInfo;
+}());
+function range(from, to) {
+    var ar = [];
+    for (var i = from; i <= to; i++) {
+        ar.push(i);
+    }
+    return ar;
+}
+function getWorksStr(students) {
+    var studentWorks = students.map(function (s, index) {
+        return "\n\t\t\t<div class=\"imgleft\">\n\t\t\t\t<a rel=\"lightbox[works]\" href=\"../img/" + s.id + ".png\"><img\n\t\t\t\t\tsrc=\"../img/" + s.id + "_s.png\" class=\"samune\"></a>\n\t\t\t\t<p>\n\t\t\t\t\t<b>" + s.name + "</b> - (<a href=\"" + s.gsfPass + "\">gsf\u30D5\u30A1\u30A4\u30EB</a>)<br>\n\t\t\t\t\t<b>\u30BF\u30A4\u30C8\u30EB</b>\n\t\t\t\t\t\u300C" + s.title + "\u300D\n\t\t\t\t</p>\n\t\t\t\t<p>\n\t\t\t\t\t<b>\u30A4\u30F3\u30B9\u30C8\u30E9\u30AF\u30BF\u30FC\u304B\u3089\u306E\u30B3\u30E1\u30F3\u30C8</b><br>\n\t\t\t\t\t" + s.comment + "\n\t\t\t\t</p>\n\t\t\t</div>\n";
+    });
+    return studentWorks.join("");
+}
+function genHTML() {
+    var year = $('#year').val();
+    var groupName = $('#group-name').val();
+    var taName = $('#ta-name').val();
+    var studentLen = $('.work-form').length;
+    console.log(studentLen);
+    var students = range(0, studentLen - 1).map(function (i, index, array) {
+        var name = $("#name" + i).val();
+        var id = $("#id" + i).val();
+        var role = $("#role" + i).val();
+        var gsfPass = $("#gsf-pass" + i).val();
+        var title = $("#title" + i).val();
+        var comment = $("#comment" + i).val();
+        return new StudentInfo(name, id, role, gsfPass, title, comment);
+    });
+    var tableStr = getTableStr(students);
+    var works = getWorksStr(students);
+    var htmlStr = "<!DOCTYPE HTML>\n<html lang=\"ja\">\n<head>\n\t<meta charset=\"UTF-8\">\n\t<link rel=\"stylesheet\" href=\"css/default.css\">\n\t<link href=\"css/lightbox.css\" rel=\"stylesheet\">\n\t<script\n        src=\"https://code.jquery.com/jquery-3.2.1.min.js\"\n        integrity=\"sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=\"\n        crossorigin=\"anonymous\"></script>\n\t<script src=\"js/lightbox-2.6.min.js\"></script>\n\t<title>" + groupName + "</title>\n</head>\n<body>\n\t<div id=\"wrapper\">\n\t\t<header>\n\t\t\t<h1>\u30B3\u30F3\u30D4\u30E5\u30FC\u30BF\u30B5\u30A4\u30A8\u30F3\u30B9\u30B5\u30DE\u30FC\u30AD\u30E3\u30F3\u30D7 " + year + "</h1>\n\t\t</header>\n\t\t<article>\n\t\t\t<h2>" + groupName + "</h2>\n\t\t\t<dl>\n\t\t\t\t<dt>\u30B0\u30EB\u30FC\u30D7\u540D</dt>\n\t\t\t\t<dd>" + groupName + "</dd>\n\t\t\t\t<dt>TA</dt>\n\t\t\t\t<dd>" + taName + "</dd>\n\t\t\t</dl>\n\t\t\t<h2>\u30E1\u30F3\u30D0\u30FC</h2>\n\t\t\t<table>\n\t\t\t    <tr>\n\t\t\t        <td>\u540D\u524D</td>\n\t\t\t        <td>ID</td>\n\t\t\t        <td>\u5F79\u5272</td>\n\t\t\t    </tr>\n" + tableStr + "\n\t\t\t</table>\n\t\t\t\n\t\t\t<h2>\u5352\u696D\u5236\u4F5C</h2>\n" + works + "\n\t\t\t\n\t\t\t<h2>\u30B0\u30EB\u30FC\u30D7\u5199\u771F</h2>\n\t\t\t<a rel=\"lightbox[groupphoto]\" href=\"img/g1.jpg\"><img src=\"img/g1_s.jpg\" class=\"samune\"></a>\n\t\t\t<a rel=\"lightbox[groupphoto]\" href=\"img/g2.jpg\"><img src=\"img/g2_s.jpg\" class=\"samune\"></a>\n\t\t\t<a rel=\"lightbox[groupphoto]\" href=\"img/g3.jpg\"><img src=\"img/g3_s.jpg\" class=\"samune\"></a>\n\t\t</article>\n\t\t<footer>\n\t\t<p>&copy " + year + " Computer Science Summer Camp, Aizu University, All Rights Reserved.</p>\n\t\t</footer>\n\t</div> <!-- #wrapper -->\n</body>\n</html>\n";
+    //textメソッドを使う
+    $('#converted').text(htmlStr);
+}
+$('#convert').on('click', genHTML);

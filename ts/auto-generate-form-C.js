@@ -1,5 +1,5 @@
 function makeTextForm(id, innerStr) {
-    var label = $('<label for=${id}>').html(innerStr);
+    var label = $("<label for=" + id + ">").html(innerStr);
     $('<div class="form-group"></div>')
         .append(label)
         .append("<input id=" + id + " class=\"form-control\">")
@@ -27,7 +27,7 @@ function makeSelectForm(id, innerStr) {
         }
         return select;
     };
-    var label = $("<label for=${id}>").html(innerStr);
+    var label = $("<label for=" + id + ">").html(innerStr);
     $('<div class="form-group"></div>')
         .append(label)
         .append(makeSelectTag(id))
