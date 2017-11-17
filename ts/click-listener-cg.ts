@@ -90,6 +90,26 @@ function genHTML() {
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
 	<script src="js/lightbox-2.6.min.js"></script>
+	<style type="text/css">
+                .imgleft {
+                overflow: hidden;
+                height: auto;
+                }
+
+                .imgleft img {
+                        float: left;
+                        margin: 0 15px 40px 0 !important;
+                        padding: 0 !important;
+                        border: 0 !important;
+                }
+
+                .imgleft p {
+                        overflow: hidden;
+                        height: auto;
+                        font-size: small;
+                }
+        </style>
+	
 	<title>${groupName}</title>
 </head>
 <body>
