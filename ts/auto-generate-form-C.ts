@@ -8,6 +8,16 @@ function makeTextForm(id: string, innerStr: string) {
 
 }
 
+function makeTextArea(id: string, innerStr: string) {
+    const label = $(`<label for=${id}>`).html(innerStr);
+
+    $('<div class="form-group"></div>')
+        .append(label)
+        .append(`<textarea id=${id} class="form-control" rows="10"></textarea>`)
+        .appendTo('#forms');
+
+}
+
 function range(from: number, to: number) {
     const ar: number[] = [];
     for (let i: number = from; i <= to; i++) {
@@ -53,7 +63,8 @@ function makeTableForm() {
 
     let trHeader = $('<tr></tr>')
         .append('<th>名前</th>')
-        .append('<th>ID</th>');
+        .append('<th>ID</th>')
+        .append('<th>役割</th>');
 
     let table = $('<table id="table"></table>')
         .append(trHeader);
@@ -75,5 +86,8 @@ makeTextForm('ta-name', 'TAの名前');
 makeTextForm('about-team', 'どのようなチームか');
 
 makeTableForm();
+makeTextArea('students', '名前,ID,役割（それぞれの項目をカンマ区切りで入力してください）');
 
-makeTextForm('from-ta', 'インストラクターより');
+makeTextArea('from-ta', 'インストラクターより');
+
+makeTextForm('pict-value', 'グループ写真の添字(c2など)');

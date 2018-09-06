@@ -5,6 +5,13 @@ function makeTextForm(id, innerStr) {
         .append("<input id=" + id + " class=\"form-control\">")
         .appendTo('#forms');
 }
+function makeTextArea(id, innerStr) {
+    var label = $("<label for=" + id + ">").html(innerStr);
+    $('<div class="form-group"></div>')
+        .append(label)
+        .append("<textarea id=" + id + " class=\"form-control\" rows=\"10\"></textarea>")
+        .appendTo('#forms');
+}
 function range(from, to) {
     var ar = [];
     for (var i = from; i <= to; i++) {
@@ -44,7 +51,8 @@ function makeTableForm() {
     };
     var trHeader = $('<tr></tr>')
         .append('<th>名前</th>')
-        .append('<th>ID</th>');
+        .append('<th>ID</th>')
+        .append('<th>役割</th>');
     var table = $('<table id="table"></table>')
         .append(trHeader);
     for (var i = 0; i < 3; i++) {
@@ -60,4 +68,6 @@ makeTextForm('group-name', 'グループ名');
 makeTextForm('ta-name', 'TAの名前');
 makeTextForm('about-team', 'どのようなチームか');
 makeTableForm();
-makeTextForm('from-ta', 'インストラクターより');
+makeTextArea('students', '名前,ID,役割（それぞれの項目をカンマ区切りで入力してください）');
+makeTextArea('from-ta', 'インストラクターより');
+makeTextForm('pict-value', 'グループ写真の添字(c2など)');
