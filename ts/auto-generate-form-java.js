@@ -66,12 +66,14 @@ function makeSelectForm(id, innerStr) {
 makeSelectForm('year', '今年は西暦何年？');
 makeTextForm('group-name', 'グループ名');
 makeTextForm('ta-name', 'TAの名前');
-makeTextForm('about-team', 'どのようなチームか');
+// makeTextForm('about-team', 'どのようなチームか');
+makeTextArea('about-team', 'どのようなチームか');
 makeJavaTableForm();
+// カンマ区切りで入力する場合
+// makeTextArea('students', '名前,ID,役割（それぞれの項目をカンマ区切りで入力してください）');
 makeTextForm('game-name', '卒業制作のゲーム名');
 makeTextArea('how-to-play', '操作方法');
-makeTextForm('source-pass-jis', 'ソースファイルのパス Windows版（Shift-JIS）');
-makeTextForm('source-pass-utf8', 'ソースファイルのパス UNIX版（UTF-8）');
-makeTextForm('jar-pass-jis', 'jarファイルのパス Windows版（Shift-JIS）');
-makeTextForm('jar-pass-utf8', 'jarファイルのパス UNIX版（UTF-8）');
-makeTextForm('from-ta', 'インストラクターより');
+makeTextForm('game-path', '「ゲームはこちら」で実行されるHTMLファイルのパス(相対パス)');
+makeTextForm('source-path-utf8', 'ソースファイルのパス（UTF-8）');
+makeTextArea('from-ta', 'インストラクターより');
+makeTextForm('pict-value', 'グループ写真の添字(js1など)');

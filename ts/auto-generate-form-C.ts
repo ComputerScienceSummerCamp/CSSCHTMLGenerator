@@ -86,7 +86,8 @@ makeTextForm('ta-name', 'TAの名前');
 makeTextForm('about-team', 'どのようなチームか');
 
 makeTableForm();
-makeTextArea('students', '名前,ID,役割（それぞれの項目をカンマ区切りで入力してください）');
+// カンマ区切りで入力する場合
+// makeTextArea('students', '名前,ID,役割（それぞれの項目をカンマ区切りで入力してください）');
 
 makeTextArea('from-ta', 'インストラクターより');
 

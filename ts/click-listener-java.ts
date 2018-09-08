@@ -28,92 +28,177 @@ function genHTML() {
     const year = $('#year').val();
     const groupName = $('#group-name').val();
     const taName = $('#ta-name').val();
-    const aboutTeam = $('#about-team').val();
+    const aboutTeam = $('#about-team').val().replace(/\n/g,'<br>\n');
     const gameName = $('#game-name').val();
-    const howToPlay = $('#how-to-play').val();
-    const sourcePassJIS = $('#source-pass-jis').val();
-    const sourcePassUTF8 = $('#source-pass-utf8').val();
-    const jarPassJIS = $('#jar-pass-jis').val();
-    const jarPassUTF8 = $('#jar-pass-utf8').val();
-    const fromTA = $('#from-ta').val();
+    const howToPlay = $('#how-to-play').val().replace(/\n/g,'<br>\n');
+    const gamePath = $('#game-path').val();
+    const sourcePathUTF8 = $('#source-path-utf8').val();
+    const fromTA = $('#from-ta').val().replace(/\n/g,'<br>\n');
 
     const tableStr = getTableStr();
+    // カンマ区切りで入力する場合
+    // let convertTableHTML = function (s) {
+    //     const splited = s.split(',');
+    //     const name = splited[0];
+    //     const id = splited[1];
+    //     const role = splited[2];
+    //
+    //     return `<tr>
+    //         <td>${name}</td>
+    //     <td><a href="../../../students/g1cp/${id}">${id}</a></td>
+    //     <td>${role}</td>
+    //     </tr>`
+    // };
+    //
+    // const tableStr = $('#students').val().split("\n").map(s => convertTableHTML(s)).join("\n");
+
+    const pictValue = $('#pict-value').val();
 
     const htmlStr =
         `<!DOCTYPE HTML>
-<html lang="ja">
+<!--
+	Linear by TEMPLATED
+    templated.co @templatedco
+    Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
 <head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="css/default.css">
-	<link href="css/lightbox.css" rel="stylesheet">
-	<script
-        src="https://code.jquery.com/jquery-3.2.1.min.js"
-        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
-	<script src="js/lightbox-2.6.min.js"></script>
-	<title>${groupName}</title>
+    <title>Computer Science Summer Camp</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/css/lightbox.min.css">
+    <link rel="stylesheet" href="../../../css/style.css"/>
+    <link rel="stylesheet" href="../../../css/group.css"/>
 </head>
 <body>
-	<div id="wrapper">
-		<header>
-			<h1>コンピュータサイエンスサマーキャンプ ${year}</h1>
-		</header>
-		<article>
-			<h2>${groupName}</h2>
-			<dl>
-				<dt>グループ名</dt>
-				<dd>${groupName}</dd>
-				<dt>TA</dt>
-				<dd>${taName}</dd>
-				<dt>どのようなチームか</dt>
-				<dd>${aboutTeam}</dd>
-			</dl>
-			<h2>メンバー</h2>
-			<table>
-			    <tr>
-			        <td>名前</td>
-			        <td>ID</td>
-			        <td>役割</td>
-			    </tr>
-                ${tableStr}
-			</table>
-			<h2>卒業制作</h2>
-			<h3>${gameName}</h3>
-			
-			<h4>操作方法</h4>
-			<p>
-			    ${howToPlay}
-			</p>
-			<h4>ソースファイル</h4>
-			<p><a href="${sourcePassJIS}">Windows版（Shift-JIS）</a>　<a href="${sourcePassUTF8}">UNIX版（UTF-8）</a></p>
-			<h4>JARファイル</h4>
-			<p><a href="${jarPassJIS}">Windows版（Shift-JIS）</a>　<a href="${jarPassUTF8}">UNIX版（UTF-8）</a></p>
-			
-			<h4>オープニング</h4>
-			<a rel="lightbox[opening]" href="img/op1.png"><img src="img/op1_s.png" class="samune"></a>
-			<a rel="lightbox[opening]" href="img/op2.png"><img src="img/op2_s.png" class="samune"></a>
-			
-			<h4>エンディング</h4>
-			<a rel="lightbox" href="img/ed.png"><img src="img/ed_s.png" class="samune"></a>
-			
-			<h4>スクリーンショット</h4>
-			<a rel="lightbox[screenshot]" href="img/s1.png"><img src="img/s1_s.png" class="samune"></a>
-			<a rel="lightbox[screenshot]" href="img/s2.png"><img src="img/s2_s.png" class="samune"></a>
-			<a rel="lightbox[screenshot]" href="img/s3.png"><img src="img/s3_s.png" class="samune"></a>
-			
-			<h2>インストラクターより</h2>
-			<p>
-				${fromTA}
-			</p>
-			<h2>グループ写真</h2>
-			<a rel="lightbox[groupphoto]" href="img/g1.jpg"><img src="img/g1_s.jpg" class="samune"></a>
-			<a rel="lightbox[groupphoto]" href="img/g2.jpg"><img src="img/g2_s.jpg" class="samune"></a>
-			<a rel="lightbox[groupphoto]" href="img/g3.jpg"><img src="img/g3_s.jpg" class="samune"></a>
-		</article>
-		<footer>
-		<p>&copy ${year} Computer Science Summer Camp, Aizu University, All Rights Reserved.</p>
-		</footer>
-	</div> <!-- #wrapper -->
+
+<header class="skelton-image no-toppage">
+    <div id="nav-wrapper">
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+                <li class="active"><a href="index.html">Homepage</a></li>
+                <li><a href="../../../recruit.html">募集要項</a></li>
+                <li><a href="../../../staff.html">スタッフ紹介</a></li>
+                <li><a href="../../../group.html">卒業制作</a></li>
+                <li><a href="../../../schedule.html">スケジュール</a></li>
+                <li><a href="../../../access.html">アクセス</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+
+        <!-- Logo -->
+        <div id="logo">
+            <h1><a>${groupName}</a></h1>
+            <span class="tag">javascriptコース</span>
+        </div>
+    </div>
+
+    <!--▼▼ハンバーガーメニューここから▼▼-->
+    <div class="hm_wrap">
+        <input id="hm_menu" type="checkbox" name="hm_menu" class="hm_menu_check"/>
+        <label for="hm_menu" class="hm_btn"></label>
+        <nav class="hm_menu_wrap">
+            <ul class="hm_list">
+                <li class="active"><a href="index.html">Homepage</a></li>
+                <li><a href="../../../recruit.html">募集要項</a></li>
+                <li><a href="../../../staff.html">スタッフ紹介</a></li>
+                <li><a href="../../../group.html">卒業制作</a></li>
+                <li><a href="../../../schedule.html">スケジュール</a></li>
+                <li><a href="../../../access.html">アクセス</a></li>
+            </ul>
+        </nav>
+        <span style="color: white;">Computer Science Summer Camp</span>
+    </div>
+</header>
+
+<!-- Main -->
+<section id="main">
+    <div id="content" class="container">
+        <h2 style="margin: 0 auto;">グループ</h2>
+        <dl class="sampleList02">
+            <dt>TA</dt>
+            <dd>${taName}</dd>
+            <dt>どんなグループ？</dt>
+            <dd>${aboutTeam}</dd>
+        </dl>
+
+
+        <h2>メンバー</h2>
+        <table>
+            <tbody>
+            <tr>
+                <td><strong>名前</strong></td>
+                <td><strong>ID</strong></td>
+                <td><strong>役割</strong></td>
+            </tr>
+            ${tableStr}
+            </tbody>
+        </table>
+        
+        <h2>卒業制作</h2>
+            <h3>${gameName}</h3>
+
+	        <a href="${gamePath}">ゲームはこちらから！</a> <!--卒業制作ゲームのパスを指定-->
+
+            <h4>操作方法</h4>			
+            <p>${howToPlay}</p>
+                
+            <h4>ゲーム画面</h4>
+                <a href="img/game1.png" data-lightbox="group"><img src="img/game1.png" class="_photo"></a>
+                <a href="img/game2.png" data-lightbox="group"><img src="img/game2.png" class="_photo"></a>
+                <a href="img/game3.png" data-lightbox="group"><img src="img/game3.png" class="_photo"></a>
+                <a href="img/game4.png" data-lightbox="group"><img src="img/game4.png" class="_photo"></a>
+
+            <h4>ソースファイル</h4>
+			<p><a href="${sourcePathUTF8}">ソースファイル(HTMLやjavascriptファイル)のダウンロードはこちら</a></p>
+        <h2>インストラクターより</h2>
+        ${fromTA}
+
+
+        <h2>グループ写真</h2>
+        <a href="../../../images/group/${pictValue}_01.JPG" data-lightbox="group"><img src="../../../images/group/${pictValue}_01.JPG" class="_photo"></a>
+        <a href="../../../images/group/${pictValue}_02.JPG" data-lightbox="group"><img src="../../../images/group/${pictValue}_02.JPG" class="_photo"></a>
+        <a href="../../../images/group/${pictValue}_03.JPG" data-lightbox="group"><img src="../../../images/group/${pictValue}_03.JPG" class="_photo"></a>
+        <a href="../../../images/group/${pictValue}_04.JPG" data-lightbox="group"><img src="../../../images/group/${pictValue}_04.JPG" class="_photo"></a>
+    </div>
+</section>
+<!-- /Main -->
+
+<!-- Tweet -->
+<section id="tweet" class="skelton-image">
+    <p>
+        "平成最後の楽しい思い出をありがとう！"
+    </p>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <h2>Please take a look!</h2>
+        <p>Facebookで受講風景公開中♪</p>
+        <a href="https://www.facebook.com/ComputerScienceSummerCamp" target="_blank">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+    </div>
+</footer>
+
+<!-- Copyright -->
+<section id="copyright">
+    <div class="container">
+        © 2018 Computer Science Summer Camp, Aizu University, All Rights Reserved.
+    </div>
+</section>
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/js/lightbox.min.js"></script>
 </body>
 </html>
 `;

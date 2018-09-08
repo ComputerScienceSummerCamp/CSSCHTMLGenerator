@@ -29,23 +29,26 @@ function genHTML() {
     const aboutTeam = $('#about-team').val();
     const fromTA = $('#from-ta').val().replace(/\n/g,'<br>\n');
 
-    let convertTableHTML = function (s) {
-        const splited = s.split(',');
-        const name = splited[0];
-        const id = splited[1];
-        const role = splited[2];
+    // カンマ区切りで入力する場合
+    // let convertTableHTML = function (s) {
+    //     const splited = s.split(',');
+    //     const name = splited[0];
+    //     const id = splited[1];
+    //     const role = splited[2];
+    //
+    //     return `<tr>
+    //         <td>${name}</td>
+    //     <td><a href="../../../students/g1cp/${id}">${id}</a></td>
+    //     <td>${role}</td>
+    //     </tr>`
+    // };
+    //
+    // const tableStr = $('#students').val().split("\n").map(s => convertTableHTML(s)).join("\n");
+    // ここまで
 
-        return `<tr>
-            <td>${name}</td>
-        <td><a href="../../../students/g1cp/${id}">${id}</a></td>
-        <td>${role}</td>
-        </tr>`
-    };
+    const tableStr = getTableStr();
 
-    // const tableStr = getTableStr();
-    const tableStr = $('#students').val().split("\n").map(s => convertTableHTML(s)).join("\n");
-
-    const cValue = $('#pict-value').val();
+    const pictValue = $('#pict-value').val();
 
     const htmlStr =
         `<!DOCTYPE HTML>
@@ -140,10 +143,10 @@ function genHTML() {
 
 
         <h2>グループ写真</h2>
-        <a href="../../../images/group/${cValue}_01.JPG" data-lightbox="group"><img src="../../../images/group/${cValue}_01.JPG" class="_photo"></a>
-        <a href="../../../images/group/${cValue}_02.JPG" data-lightbox="group"><img src="../../../images/group/${cValue}_02.JPG" class="_photo"></a>
-        <a href="../../../images/group/${cValue}_03.JPG" data-lightbox="group"><img src="../../../images/group/${cValue}_03.JPG" class="_photo"></a>
-        <a href="../../../images/group/${cValue}_04.JPG" data-lightbox="group"><img src="../../../images/group/${cValue}_04.JPG" class="_photo"></a>
+        <a href="../../../images/group/${pictValue}_01.JPG" data-lightbox="group"><img src="../../../images/group/${pictValue}_01.JPG" class="_photo"></a>
+        <a href="../../../images/group/${pictValue}_02.JPG" data-lightbox="group"><img src="../../../images/group/${pictValue}_02.JPG" class="_photo"></a>
+        <a href="../../../images/group/${pictValue}_03.JPG" data-lightbox="group"><img src="../../../images/group/${pictValue}_03.JPG" class="_photo"></a>
+        <a href="../../../images/group/${pictValue}_04.JPG" data-lightbox="group"><img src="../../../images/group/${pictValue}_04.JPG" class="_photo"></a>
     </div>
 </section>
 <!-- /Main -->
