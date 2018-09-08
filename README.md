@@ -5,7 +5,7 @@
 Cコース
 https://computersciencesummercamp.github.io/CSSCHTMLGenerator/C-template.html
 
-Javaコース
+Javascriptコース
 https://computersciencesummercamp.github.io/CSSCHTMLGenerator/
 
 3DCGコース
