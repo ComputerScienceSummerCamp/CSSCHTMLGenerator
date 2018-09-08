@@ -5,6 +5,13 @@ function makeTextForm(id, innerStr) {
         .append("<input id=" + id + " class=\"form-control\">")
         .appendTo('#forms');
 }
+function makeTextArea(id, innerStr) {
+    var label = $("<label for=" + id + ">").html(innerStr);
+    $('<div class="form-group"></div>')
+        .append(label)
+        .append("<textarea id=" + id + " class=\"form-control\" rows=\"10\"></textarea>")
+        .appendTo('#forms');
+}
 function range(from, to) {
     var ar = [];
     for (var i = from; i <= to; i++) {
@@ -50,6 +57,7 @@ function makeWorkForm(i) {
     var id = makeInputForm('id', 'ID');
     var role = makeInputForm('role', '役割');
     var gsfPass = makeInputForm('gsf-pass', 'gsfファイルのパス');
+    var pictPath = makeInputForm('pict-path', 'サムネイル画像のパス');
     var title = makeInputForm('title', 'タイトル');
     var comment = makeTextArea('comment', 'インストラクターからのコメント');
     return $('<div class="work-form"></div>')
@@ -57,14 +65,17 @@ function makeWorkForm(i) {
         .append(id)
         .append(role)
         .append(gsfPass)
+        .append(pictPath)
         .append(title)
         .append(comment);
 }
+var index = 0;
 function makeWorks() {
     var works = $('<div class="form-group" id="works"></div>');
     var worksForm = $('<div class="form-group" id="works-form"></div>');
     for (var i = 0; i < 3; i++) {
         worksForm.append(makeWorkForm(i));
+        index = i;
     }
     works
         .append(worksForm)
@@ -72,10 +83,13 @@ function makeWorks() {
         .appendTo('#forms');
 }
 function appendOne() {
-    $('#works-form').append(makeWorkForm());
+    index++;
+    $('#works-form').append(makeWorkForm(index));
 }
 makeSelectForm('year', '今年は西暦何年？');
 makeTextForm('group-name', 'グループ名');
 makeTextForm('ta-name', 'TAの名前');
+makeTextArea('about-team', 'どんなグループ？');
 makeWorks();
 $('#add-oneline').on('click', appendOne);
+makeTextForm('pict-value', 'グループ写真の添字(3dcg1など)');
